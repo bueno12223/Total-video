@@ -110,3 +110,43 @@ body{
     
 
 }
+.search img{
+    cursor: pointer;
+}
+/*  CARRUSEL */
+.rail{
+    width: 100%;
+    grid-auto-flow: ;
+    padding: 50px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-row: 0fr;
+    column-gap: 8px;
+    
+    margin-top: 40px;
+    
+    
+}
+.rail__item{
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    scroll-snap-align: center;
+    cursor: pointer;
+    transition: 450ms;
+    transform-origin: center left;
+    overflow: hidden;
+    min-width: 150px;
+    
+}
+.rail__item:hover {
+    transform: translate3d(100px, 0, 0);
+}
+.rail:hover .rail__item {
+    opacity: .3;
+}
+.rail:hover .rail__item:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
