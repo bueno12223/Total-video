@@ -116,7 +116,7 @@ body{
 /*  CARRUSEL */
 .rail{
     width: 100%;
-    grid-auto-flow: ;
+    
     padding: 50px;
     height: 300px;
     display: grid;
@@ -129,15 +129,18 @@ body{
     
 }
 .rail__item{
-    background-color: white;
+    background-color: black;
     border-radius: 20px;
     position: relative;
     scroll-snap-align: center;
-    cursor: pointer;
+    
     transition: 450ms;
     transform-origin: center left;
     overflow: hidden;
     min-width: 150px;
+    position: relative;
+    object-fit: cover;
+   
     
 }
 .rail__item:hover {
@@ -149,4 +152,54 @@ body{
 .rail:hover .rail__item:hover {
     transform: scale(1.2);
     opacity: 1;
+}
+ .rail #uno {
+    background-image: url(./fonts/9a698480a4d05a694c1142ab1f1ffbf9.jpg);
+}
+.rail #b {
+    
+    background-image: url(./fonts/montanas-minimalista-arte-low-poly_2560x1440_xtrafondos.com.jpg);
+}
+.rail #c {
+    background-image: url(./fonts/Wallpaper-5.png);
+}
+.rail #d {
+    background-image: url(./fonts/the-magic-islands-of-lofoten-norway-europe-winter-morning-light-landscape-desktop-hd-wallpaper-for-pc-tablet-and-mobile-3840×2160-wallpaper-preview.jpg);
+}
+.rail #e {
+    
+    background-image: url(./fonts/aesthetic-anime-01.jpg);
+}
+.rail__item span img, .rail__item span svg{
+    position: absolute;
+    top: 205px;
+    width: 30px;
+    left: 8px;
+    display: none;
+    cursor: pointer;
+    
+    
+    
+    
+}
+.rail__item span svg{
+    left: 46px;
+    top: 189px;
+    
+
+    
+}
+.rail__item p{
+    position: absolute;
+    top: 238px;
+    font-size: 12px;
+    display: none;
+    
+
+}
+ .rail__item:hover p{
+    display: block;
+}
+.rail__item:hover img, .rail__item:hover svg {
+    display: block;
 }
