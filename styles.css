@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+    background: linear-gradient(90deg, #1ed8cf, #7f66bb);
+    background-origin: border-box;
+    
+        
+}
+
+.login__container{
+    border:  white 2px solid;
+    border-radius: 20px;
+    margin: 0 auto;
+    width: 350px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+   
+}
+.login__container h2{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.login__container .input{
+    margin-left: 40px;
+    background-color: transparent;
+    border: transparent;
+    width: 50%;
+    border-bottom: white 1px solid;
+    color: white;
+    width: 250px;
+    margin-bottom: 10px;
+    color: white;
+    height: 30px;
+}
+.login__container button{
+    background-color: white;
+    border: transparent;
+    margin-left: 40px;
+    width: 250px;
+    border-radius: 20px;
+    height: 25px;
+    color:  #1ed8cf;
+    font-weight: bold;
+    border-top: 30px;
+}
+.login__remember{
+    font-size: 12px;
+    margin-top: 10px;
+}
