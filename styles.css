@@ -48,3 +48,9 @@ body {
     font-size: 12px;
     margin-top: 10px;
 }
+.login__remember a{
+    padding-left: calc(100% - 300px);
+}
+.login__remember input{
+    margin-left: 40px;
+}
