@@ -11,7 +11,7 @@ body {
     border-radius: 20px;
     margin: 0 auto;
     width: 350px;
-    height: 480px;
+    height: 416px;
     display: flex;
     flex-direction: column;
    
@@ -50,7 +50,35 @@ body {
 }
 .login__remember a{
     padding-left: calc(100% - 300px);
+    text-decoration: none;
 }
 .login__remember input{
     margin-left: 40px;
+}
+.login__conatiner--socialLogin{
+    margin-top: 30px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    font-size: 14px;
+}
+.login__conatiner--socialLogin div{
+    display: flex;
+
+}
+.login__conatiner--socialLogin img{
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+}
+.login__conatiner--socialLogin a{
+    color: white;
+}
+.login__register {
+    font-size: 12px;
+   margin-top: 70px;
+  margin-left: 36px;
 }
