@@ -1,2 +1,2 @@
 # Total-video
-Un reproductor de video increíible
+Un reproductor de video increíble
