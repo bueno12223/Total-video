@@ -1,5 +1,7 @@
 import React from "react"
 
+import "./style/style.css"
+
 const header = () => {
     return(
         <header className="header">
@@ -19,3 +21,4 @@ const header = () => {
     )
 
 }
+export default header
