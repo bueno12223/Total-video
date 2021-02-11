@@ -1,6 +1,6 @@
 import React from "react"
 
-import "./style/style.css"
+import "../assets/style/components/header.scss"
 
 const header = () => {
     return(
@@ -12,7 +12,7 @@ const header = () => {
         </div>
         <div className="header__user">
             <img src="https://img.icons8.com/wired/64/ffffff/change-user-male.png" className="header__userImage"/>
-            <ul classNames="header__userText">
+            <ul className="header__userText">
                 <li><a href="">Cuenta</a></li>
                 <li><a href="">Cerrar Sesión</a></li>
             </ul>
