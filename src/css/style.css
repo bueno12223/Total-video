@@ -8,8 +8,8 @@ body {
   background-color: #7948ec;
   color: white;
   font-family: "Open Sans", sans-serif;
-  background: linear-gradient(232deg, #AB88FF, #a38bdd);
-  background-origin: border-box;
+  background: linear-gradient(90deg, #1ed8cf, #7f66bb);
+    background-origin: border-box;
 }
 
 .header {
