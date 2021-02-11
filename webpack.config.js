@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require("path")
+const webpack = require("webpack")
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -50,4 +51,3 @@ module.exports = {
     }),
   ]
 };
-
