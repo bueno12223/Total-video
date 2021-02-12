@@ -22,6 +22,18 @@ module.exports = {
         }
       },
       {
+        test: /\.(png|jpg|svg)$/,
+        use: [
+          {
+            "loader": "file-loader",
+            options: {
+              name: "assets/[hash].[ext]"
+            }
+          }
+
+        ]
+      },
+      {
         test: /\.html$/,
         use: [
           {
