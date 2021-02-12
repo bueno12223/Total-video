@@ -1,0 +1,74 @@
+.rail__item {
+    background-color: black;
+    border-radius: 20px;
+    position: relative;
+    scroll-snap-align: center;
+    transition: 450ms;
+    transform-origin: center left;
+    overflow: hidden;
+    min-width: 150px;
+    position: relative;
+    object-fit: cover;
+  }
+  
+  .rail__item:hover {
+    transform: translate3d(100px, 0, 0);
+  }
+  
+  .rail:hover .rail__item {
+    opacity: 0.3;
+  }
+  
+  .rail:hover .rail__item:hover {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  
+  .rail1 {
+    background-image: url(https://images.pexels.com/photos/789822/pexels-photo-789822.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  }
+  
+  .rail2 {
+    background-image: url(https://images.pexels.com/photos/1427741/pexels-photo-1427741.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  }
+  
+  .rail3 {
+    background-image: url(https://images.pexels.com/photos/705792/pexels-photo-705792.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  }
+  
+  .rail4 {
+    background-image: url(https://images.pexels.com/photos/904276/pexels-photo-904276.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  }
+  
+  .rail5 {
+    background-image: url(https://images.pexels.com/photos/904276/pexels-photo-904276.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500-01.jpg);
+  }
+  
+  .rail__item span img{
+    position: absolute;
+    top: 205px;
+    width: 30px;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .rail__pause {
+    left: 46px;
+    top: 189px;
+  }
+  
+  .rail__item p {
+    position: absolute;
+    top: 238px;
+    font-size: 12px;
+    display: none;
+    left: 8px;
+  }
+  
+  .rail__item:hover p {
+    display: block;
+  }
+  
+  .rail__item:hover img{
+    display: block;
+  }

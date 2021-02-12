@@ -117,12 +117,20 @@ body {
 .rail {
   width: 100%;
   padding: 50px;
+  padding-left: 0px;
+  padding-right:0px;
+  padding-top: 0px;
   height: 300px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 10px repeat(5, 1fr) 10px;
   grid-row: 0fr;
   column-gap: 8px;
-  margin-top: 40px;
+  margin-top: 20px;
+}
+.rail_title{
+  margin-left: 21px;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 .rail__item {
