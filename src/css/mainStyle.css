@@ -91,7 +91,8 @@ body {
     margin-left: 10px;
 }
 @media only screen and (max-width: 375px){
-    .login__container{
-        box-shadow: none;}
+    .header__containerImage p{
+        display: none;
+    }
 
 }
