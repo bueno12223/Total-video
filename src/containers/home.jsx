@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Header from '../components/header';
 import Search from "../components/Search";
 import Categories from "../components/categories";
@@ -10,10 +10,41 @@ import useGetMovies from "../hooks/useGetMovies"
 import "../assets/style/App.scss"
 import "../assets/style/components/railItem.scss"
 
+class home extends React.Component{ 
 
-const App = () => { 
-  const movies = useGetMovies(500)
+  constructor(props) {
+    super(props);
+    this.state = {
+    loading: true,
+    error: null,
+    movies: {
+      // id: null,
+      // name: '',
+      // cover: '',
+      // overview: '',
+      // genres: '',
+    },
+  } }
 
+
+  componentDidMount(){
+    this.searchData(400)
+  }
+  async searchData(id){
+    const key = "0c7a6b113add233831a0d6eec346cd98"
+    try{
+ 
+    const data = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}`) 
+    const res = await data.json()
+    this.setState({loading: false, movies:res})
+    
+    }catch(error){
+      this.setState({loading: false, error: error})
+      console.error(error)
+    } 
+  }
+  
+render(){ 
 return (
   <div className="App">
     <Header />
@@ -28,7 +59,6 @@ return (
       </React.Fragment>
 
     )
-    {console.log(movies)}
     
 
     
@@ -38,10 +68,10 @@ return (
         {/* {useGetMovies.trends.map(item =>
            <RailItem key={item.id} {...item} />)} */}
            <RailItem></RailItem>
+           {console.log(this.state)}
         
        
       </Rail>
-
       <Categories  title="Para tí"></Categories>
       <Rail>
       {/* {initialState.originals.map(item =>
@@ -53,7 +83,7 @@ return (
 
    
   </div>
-);
+)}
   }
 
-export default App;
+export default home;
