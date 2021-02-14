@@ -4,9 +4,9 @@ import "../assets/style/components/rail.scss"
 
 const Rile  = ({children}) => (
     <section className="rail">
-        <div></div>
+        
         {children}
-        <div></div>
+        
 
     </section>
 

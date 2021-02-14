@@ -18,6 +18,7 @@ class home extends React.Component{
     this.state = {
     loading: true,
     error: null,
+    data: true,
     movies: [],
     myList: {
       id: [],
@@ -27,26 +28,37 @@ class home extends React.Component{
 
 
   componentDidMount(){
+    
     for(let i = 0; i < 5; i++){
-      const ramdomMovie = this.random(30,550)
-      console.log(ramdomMovie)
+      let ramdomMovie = this.random(30,550)
       this.searchData(ramdomMovie)
-
     }
+
+    
     
     
   }
-  random(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-}
+  random(min, max){
+    let num = Math.floor(Math.random()*(max-min+1))+min;
+    return num;
+    }
+
   async searchData(id){
     const key = "0c7a6b113add233831a0d6eec346cd98"
     try{
- 
-    const data = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}`) 
-    const res = await data.json()
-    this.state.movies.push(res)
-    this.setState({loading: false})
+      for (;this.state.movies.length < 6; id++){
+      let data = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}`) 
+      let res = await data.json()
+      if(res.success === undefined){
+        this.state.movies.push(res)
+      }
+      
+      }
+      
+      
+
+     
+   this.setState({loading: false })
     
     }catch(error){
       this.setState({loading: false, error: error})
@@ -74,8 +86,9 @@ return (
 
       <Categories  title="Mas vistas"></Categories>
       <Rail>
-      {this.state.movies.map(item =>
-           <RailItem key={item.id} {...item} />)}
+          {this.state.movies.map(item =>
+            <RailItem key={item.id} {...item} />)}
+      
          
            
            
