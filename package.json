@@ -35,6 +35,7 @@
     "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^1.3.6",
     "node-sass": "^5.0.0",
+    "react-router-dom": "^5.2.0",
     "sass-loader": "^11.0.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.19.0",
