@@ -5,6 +5,7 @@ import Categories from "../components/categories";
 import Rail from "../components/Rail"
 import RailItem from "../components/RaiItem"
 import Footer from "../components/footer"
+import Loader from "../components/Loader"
 
 
 import "../assets/style/App.scss"
@@ -61,9 +62,13 @@ class home extends React.Component{
   }
   
 render(){ 
+  if(this.state.loading === true){
+    return <Loader></Loader>
+}
 return (
+  
   <div className="App">
-    <Header />
+    <Header></Header>
     <Search/>
      {this.state.myList > 0 &&( 
       <React.Fragment>
