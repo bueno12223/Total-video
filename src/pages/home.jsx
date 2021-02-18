@@ -68,7 +68,7 @@ render(){
 return (
   
   <div className="App">
-    <Header></Header>
+
     <Search/>
      {this.state.myList > 0 &&( 
       <React.Fragment>
@@ -87,7 +87,7 @@ return (
             <RailItem key={item.id} {...item} />)}
       
       </Rail>
-      <Footer></Footer>
+
 
    
   </div>

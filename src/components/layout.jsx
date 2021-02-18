@@ -2,17 +2,16 @@ import React from 'react'
 import Navbar from "./header"
 import Footer from "./footer"
 
-class layout extends React.Component {
-    render(){
-        return(
-            <React.Fragment>
-            <Navbar></Navbar>
-            {props.children}
-            <Footer></Footer>
-        </React.Fragment>
 
-        )
-    }
+function Layout ({children}) {
+        return (
+            <div className="App">
+                <Navbar></Navbar>
+                {children}
+                <Footer></Footer>
+
+            </div>
+            );
+    
 }
-
-export default layout
+export default Layout
