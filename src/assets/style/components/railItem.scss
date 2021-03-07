@@ -30,6 +30,7 @@
   .rail_cover{
     width: 100%;
     height: 300px;
+    position: relative;
   }
 
   
@@ -37,25 +38,14 @@
     position: absolute;
     top: 205px;
     width: 30px;
-    display: none;
     cursor: pointer;
   }
   
-  .rail__item p {
-    position: absolute;
-    top: 238px;
-    font-size: 12px;
-    display: none;
-    left: 8px;
-  }
   
   .rail__overview{
     padding-bottom: 100px;
   }
   
-  .rail__item:hover p {
-    display: block;
-  }
   
   
 

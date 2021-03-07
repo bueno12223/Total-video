@@ -1,11 +1,10 @@
 import React from 'react';
-import Header from '../components/header';
 import Search from "../components/Search";
 import Categories from "../components/categories";
 import Rail from "../components/Rail"
 import RailItem from "../components/RaiItem"
-import Footer from "../components/footer"
 import Loader from "../components/Loader"
+import {Connect} from "react-redux"
 
 
 import "../assets/style/App.scss"
@@ -36,7 +35,7 @@ class home extends React.Component{
     return num;
     }
 
-  async getRamdomMovies(loop = 10){
+  async getRamdomMovies(loop = 5){
     try{
       for(let i = 0;i < loop;){
         let id = this.random(50,550)
@@ -81,7 +80,14 @@ return (
   
 
     ) }
-      <Categories  title="Aleatorio"></Categories>
+      <Categories  title="Mas populares"></Categories>
+      <Rail>
+          {this.state.popular.results.map(item =>
+            <RailItem key={item.id} {...item} />)}
+      
+      </Rail>
+
+      <Categories  title="aleatorio"></Categories>
       <Rail>
           {this.state.movies.map(item =>
             <RailItem key={item.id} {...item} />)}
