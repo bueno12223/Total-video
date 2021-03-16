@@ -10,18 +10,21 @@ import "../assets/style/App.scss"
 import "../assets/style/components/railItem.scss"
 
 const home = props => { 
-
 return (
   
   <div className="App">
 
     <Search/>
-     {props.myList > 0 &&( 
+    {console.log(props.myList)}
+     {props.myList.length != 0 &&( 
+       
       <React.Fragment>
-      <Categories  title="Mi lista"></Categories>
-     
+      <Categories  title="Mi Lista"></Categories>
       <Rail>
-        <RailItem/>
+        {
+        props.myList.map(e  => <RailItem key={e.id} {...e}></RailItem>)}
+
+            
       </Rail>
       </React.Fragment> 
   
@@ -29,7 +32,7 @@ return (
     ) }
       <Categories  title="Mas populares"></Categories>
       <Rail>
-        {props.movies.map(e  => <RailItem id={e.id} {...e}></RailItem>)}
+        {props.movies.map(e  => <RailItem  key={e.id} {...e}></RailItem>)}
 
             
       </Rail>
@@ -42,7 +45,8 @@ return (
 
 const mapStateToProps = state =>{
   return{
-    movies: state.movies
+    movies: state.movies,
+    myList: state.myList
   };
 };
 export default connect(mapStateToProps, null)(home);
