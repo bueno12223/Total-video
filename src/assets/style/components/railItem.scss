@@ -9,22 +9,17 @@
     min-width: 100px;
     position: relative;
     object-fit: cover;
-    cursor: pointer;
+
     max-width: 240px;
   }
   
   .rail__item:hover {
     transform: translate3d(100px, 0, 0);
-  }
- 
-  
-  .rail:hover .rail__item {
-    opacity: 0.3;
+
   }
   
   .rail:hover .rail__item:hover {
     transform: scale(1.2);
-    opacity: 1;
   }
   
   .rail_cover{
@@ -52,4 +47,15 @@
   .rail__item:hover ~ .rail__item {
     -webkit-transform: translate3d(50px, 0, 0);
             transform: translate3d(50px, 0, 0);
+  }
+
+  .rail_info{
+    position: absolute;
+    bottom: 0px;
+    opacity: 1;
+  }
+  .rail_info img {
+    width: 28px;
+    margin-left: 10px;
+    cursor: pointer;
   }
