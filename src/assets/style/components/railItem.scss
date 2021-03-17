@@ -16,6 +16,11 @@
   .rail__item:hover {
     transform: translate3d(100px, 0, 0);
 
+
+
+  }
+  .rail__item:hover .rail_cover{
+    opacity: 0.3;
   }
   
   .rail:hover .rail__item:hover {
@@ -58,4 +63,23 @@
     width: 28px;
     margin-left: 10px;
     cursor: pointer;
+  }
+  .rail_info p {
+    height: 242px;
+    font-size: 10px;
+    margin-left: 5px;
+    display: none;
+
+
+  }
+  .rail__item:hover .rail_info p{
+    display: block;
+  }
+  .rail_info h4 {
+    margin: auto 0;
+    display: none;
+
+  }
+  .rail__item:hover .rail_info h4{
+    display: block;
   }

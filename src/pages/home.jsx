@@ -1,21 +1,42 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Search from "../components/Search";
 import Categories from "../components/categories";
 import Rail from "../components/Rail"
 import RailItem from "../components/RaiItem"
+import Loader from "../components/Loader"
 import {connect} from "react-redux"
+import {putMovies,setFavorites} from '../actions'
 
 
 import "../assets/style/App.scss"
 import "../assets/style/components/railItem.scss"
 
-const home = props => { 
+const home = props => {
+  let loading = true;
+  useEffect( () => {
+    hanldePutMovies()
+    loading = false;
+  },props);
+  const hanldePutMovies = async () =>{
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=b89fc45c2067cbd33560270639722eae`);                    
+    let res = await data.json();
+    let peliculas = []
+    for (let index = 0; index < 5; index++) {
+      peliculas.push(res.results[index])
+      
+    }
+    props.putMovies(peliculas)
+  }
+
+  // if(loading === true){
+  //   return (<Loader></Loader>)}
+
 return (
+
   
   <div className="App">
-
+    {console.log(props)}
     <Search/>
-    {console.log(props.myList)}
      {props.myList.length != 0 &&( 
        
       <React.Fragment>
@@ -46,7 +67,10 @@ return (
 const mapStateToProps = state =>{
   return{
     movies: state.movies,
-    myList: state.myList
+    myList: state.myList,
   };
 };
-export default connect(mapStateToProps, null)(home);
+const mapDispachToProps = {
+  putMovies
+};
+export default connect(mapStateToProps, mapDispachToProps)(home);

@@ -5,4 +5,8 @@ export const setFavorites = payload => ({
 export const deleteFavorites = (payload) => ({
     type: 'DELETE_FAVORITE',
     payload
+    }); 
+export const putMovies = (payload) => ({
+    type: 'PUT_MOVIES',
+    payload
     });   

@@ -7,12 +7,18 @@ const reducer = (state, action) =>{
           ? [...state.myList]
           : [...state.myList, action.payload],
 	  };
-	  case "DELETE_FAVORITE":
-		  console.log(action.payload)
+	  case "DELETE_FAVORITE": 
 		  return{
 			  ...state,
 			  myList: state.myList.filter( e => e.id != action.payload)
-		  }
+		  };
+		case 'PUT_MOVIES':
+			return{
+				...state,
+				movies:action.payload 
+			};
+
+		  
 		default:
             return state; 
             }
