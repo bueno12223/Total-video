@@ -6,7 +6,23 @@ export const deleteFavorites = (payload) => ({
     type: 'DELETE_FAVORITE',
     payload
     }); 
-export const putMovies = (payload) => ({
-    type: 'PUT_MOVIES',
+export const putPopularMovies = (payload) => ({
+    type: 'PUT_POPULAR',
     payload
     });   
+export const putKidsMovies = (payload) => ({
+    type: 'PUT_KIDS',
+    payload
+    });  
+export const putRatedMovies = (payload) => ({
+    type: 'PUT_RATED',
+    payload
+    }); 
+export const putComedyMovies = (payload) => ({
+    type: 'PUT_COMEDY',
+    payload
+    }); 
+export const putSeachData = (payload) => ({
+    type: 'PUT_DATA',
+    payload
+    }); 

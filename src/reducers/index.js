@@ -12,11 +12,32 @@ const reducer = (state, action) =>{
 			  ...state,
 			  myList: state.myList.filter( e => e.id != action.payload)
 		  };
-		case 'PUT_MOVIES':
+		case 'PUT_POPULAR':
 			return{
 				...state,
-				movies:action.payload 
+				popular: action.payload
 			};
+		case 'PUT_KIDS':
+			return{
+				...state,
+				kids:action.payload 
+			};
+		case 'PUT_RATED':
+			return{
+				...state,
+				rated:action.payload 
+			};
+		case 'PUT_COMEDY':
+			return{
+				...state,
+				comedy:action.payload 
+			};
+		case 'PUT_DATA':
+			console.log(action.payload)
+		return{
+			...state,
+			data:action.payload
+		};
 
 		  
 		default:

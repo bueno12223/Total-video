@@ -4,43 +4,62 @@ import Categories from "../components/categories";
 import Rail from "../components/Rail"
 import RailItem from "../components/RaiItem"
 import Loader from "../components/Loader"
+import SearchData from './search'
 import {connect} from "react-redux"
-import {putMovies,setFavorites} from '../actions'
+import "../assets/style/components/categories.scss"
+import {putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies} from '../actions'
 
 
 import "../assets/style/App.scss"
 import "../assets/style/components/railItem.scss"
 
 const home = props => {
-  let loading = true;
-  useEffect( () => {
-    hanldePutMovies()
-    loading = false;
-  },props);
-  const hanldePutMovies = async () =>{
-    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=b89fc45c2067cbd33560270639722eae`);                    
-    let res = await data.json();
-    let peliculas = []
-    for (let index = 0; index < 5; index++) {
-      peliculas.push(res.results[index])
-      
-    }
-    props.putMovies(peliculas)
+  const query = {
+    popularity: 'sort_by=popularity.desc',
+    key: 'api_key=b89fc45c2067cbd33560270639722eae',
+    language: 'language=es',
+    gender: 'with_genres',
+    certification: 'certification_country=US&&certification=R'
   }
+  useEffect( () => {
+    handlePutMovies();
+    HandleGetKidsMovies();
+    HandleGetRatedMovies();
+    HanldleGetComedyMovies();
+  },props);
 
-  // if(loading === true){
-  //   return (<Loader></Loader>)}
+  const handlePutMovies = async () =>{
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.popularity}&${query.key}&${query.language}`);                    
+    let res = await data.json();
+    props.putPopularMovies(res.results);
+  }
+  const HandleGetKidsMovies = async () => {
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.gender}=878&${query.popularity}&${query.key}&${query.language}`);                    
+    let res = await data.json();
+    props.putKidsMovies(res.results);  
+  }
+  const HandleGetRatedMovies = async () => {
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie/?${query.certification}&${query.popularity}&${query.key}&${query.language}`);                    
+    let res = await data.json();
+    props.putRatedMovies(res.results);  
+  }
+  const HanldleGetComedyMovies = async () => {
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.gender}=35&${query.popularity}&${query.key}&${query.language}`);                    
+    let res = await data.json();
+    props.putComedyMovies(res.results);  
+  } 
+  if(props.popular.length == 0 
+    || props.kids.length == 0 
+    || props.rated.length == 0
+    || props.comedy.length == 0    )( <Loader></Loader>)
 
 return (
-
-  
   <div className="App">
-    {console.log(props)}
-    <Search/>
+    <Search />
+    
      {props.myList.length != 0 &&( 
        
       <React.Fragment>
-      <Categories  title="Mi Lista"></Categories>
       <Rail>
         {
         props.myList.map(e  => <RailItem key={e.id} {...e}></RailItem>)}
@@ -53,10 +72,21 @@ return (
     ) }
       <Categories  title="Mas populares"></Categories>
       <Rail>
-        {props.movies.map(e  => <RailItem  key={e.id} {...e}></RailItem>)}
-
-            
+        {props.popular.map(e  => <RailItem  key={e.id} {...e}></RailItem>)}
       </Rail>
+      <Categories  title="Acción"></Categories>
+      <Rail>
+        {props.kids.map(e  => <RailItem  key={e.id} {...e}></RailItem>)}
+      </Rail>
+      <Categories  title="Mejores puntaciones"></Categories>
+      <Rail>
+        {props.rated.map(e  => <RailItem  key={e.id} {...e}></RailItem>)}
+      </Rail>
+      <Categories  title="Comedia"></Categories>
+      <Rail>
+        {props.comedy.map(e  => <RailItem  key={e.id} {...e}></RailItem>)}
+      </Rail>
+      
 
 
    
@@ -66,11 +96,15 @@ return (
 
 const mapStateToProps = state =>{
   return{
-    movies: state.movies,
+    popular: state.popular,
+    kids: state.kids,
+    comedy: state.comedy,
+    rated: state.rated,
     myList: state.myList,
+    data: state.data
   };
 };
 const mapDispachToProps = {
-  putMovies
+  putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies
 };
 export default connect(mapStateToProps, mapDispachToProps)(home);
