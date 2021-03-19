@@ -36,7 +36,10 @@ const reducer = (state, action) =>{
 			console.log(action.payload)
 		return{
 			...state,
-			data:action.payload
+			data: action.payload.length
+			?action.payload
+			: [] 
+			
 		};
 
 		  

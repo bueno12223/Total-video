@@ -1,10 +1,10 @@
 import React from "react";
 import {connect} from 'react-redux';
 import {setFavorites, deleteFavorites} from '../actions';
-import blanco from '../assets/images/blanco.jpg'
 import "../assets/style/components/railItem.scss";
 import add from '../assets/images/estrella.png'
-import play from '../assets/images/play.png'
+import play from '../assets/images/play.png';
+import Loader from "../components/Loader"
 
 const railitem = (props) => {
     const {poster_path, id,overview,title} = props;
@@ -23,7 +23,9 @@ const railitem = (props) => {
     }
     return(
         <div className='rail__item' id={id}>
-                    <img className="rail_cover" src={`https://image.tmdb.org/t/p/w342${poster_path}` || blanco  } />
+                    {poster_path == undefined &&(<div></div>)
+                    }
+                    <img className="rail_cover" src={`https://image.tmdb.org/t/p/w342${poster_path}`} />
                     <div className="rail_info">
                     <p>{overview}</p>
                     <h4>{title}</h4>

@@ -1,17 +1,17 @@
 import React,{useEffect} from 'react';
+
 import Search from "../components/Search";
 import Categories from "../components/categories";
-import Rail from "../components/Rail"
-import RailItem from "../components/RaiItem"
-import Loader from "../components/Loader"
-import SearchData from './search'
-import {connect} from "react-redux"
-import "../assets/style/components/categories.scss"
-import {putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies} from '../actions'
+import Rail from "../components/Rail";
+import RailItem from "../components/RaiItem";
+import Loader from "../components/Loader";
+import {connect} from "react-redux";
+import "../assets/style/components/categories.scss";
+import {putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies,putSeachData} from '../actions';
 
 
-import "../assets/style/App.scss"
-import "../assets/style/components/railItem.scss"
+import "../assets/style/App.scss";
+import "../assets/style/components/railItem.scss";
 
 const home = props => {
   const query = {
@@ -27,6 +27,7 @@ const home = props => {
     HandleGetRatedMovies();
     HanldleGetComedyMovies();
   },props);
+ 
 
   const handlePutMovies = async () =>{
     const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.popularity}&${query.key}&${query.language}`);                    
@@ -48,10 +49,16 @@ const home = props => {
     let res = await data.json();
     props.putComedyMovies(res.results);  
   } 
-  if(props.popular.length == 0 
-    || props.kids.length == 0 
-    || props.rated.length == 0
-    || props.comedy.length == 0    )( <Loader></Loader>)
+  if(props.data.length != 0){
+    return(
+      <React.Fragment>
+        <Search />
+       
+       <Rail>
+         { props.data.map(e  => <RailItem key={e.id} {...e}></RailItem>)}  
+       </Rail>
+       </React.Fragment>
+    )}
 
 return (
   <div className="App">
@@ -72,7 +79,8 @@ return (
     ) }
       <Categories  title="Mas populares"></Categories>
       <Rail>
-        {props.popular.map(e  => <RailItem  key={e.id} {...e}></RailItem>)}
+        
+        {props.popular.map(e  => <RailItem  key={e.id} {...e}></RailItem>)} 
       </Rail>
       <Categories  title="Acción"></Categories>
       <Rail>
@@ -105,6 +113,6 @@ const mapStateToProps = state =>{
   };
 };
 const mapDispachToProps = {
-  putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies
+  putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies, putSeachData
 };
 export default connect(mapStateToProps, mapDispachToProps)(home);
