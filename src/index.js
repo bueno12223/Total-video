@@ -6,7 +6,7 @@ import reducer from "./reducers"
 import App from "./app"
 
 let initialState = {
-    'user': {},
+    'user': {email: null, password: null},
     'myList':[],
     'popular': [],
     'kids': [],

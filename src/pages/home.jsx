@@ -1,13 +1,14 @@
 import React,{useEffect} from 'react';
+import {connect} from "react-redux";
+import {putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies,putSeachData} from '../actions';
 
 import Search from "../components/Search";
 import Categories from "../components/categories";
 import Rail from "../components/Rail";
 import RailItem from "../components/RaiItem";
-import Loader from "../components/Loader";
-import {connect} from "react-redux";
+
 import "../assets/style/components/categories.scss";
-import {putPopularMovies, putKidsMovies, putRatedMovies,putComedyMovies,putSeachData} from '../actions';
+
 
 
 import "../assets/style/App.scss";
