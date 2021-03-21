@@ -15,13 +15,6 @@ import "../assets/style/App.scss";
 import "../assets/style/components/railItem.scss";
 
 const home = props => {
-  const query = {
-    popularity: 'sort_by=popularity.desc',
-    key: 'api_key=b89fc45c2067cbd33560270639722eae',
-    language: 'language=es',
-    gender: 'with_genres',
-    certification: 'certification_country=US&&certification=R'
-  }
   useEffect( () => {
     handlePutMovies();
     HandleGetKidsMovies();
@@ -31,23 +24,22 @@ const home = props => {
  
 
   const handlePutMovies = async () =>{
-    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.popularity}&${query.key}&${query.language}`);                    
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${props.query.popularity}&${props.query.key}&${props.query.language}`);                    
     let res = await data.json();
     props.putPopularMovies(res.results);
-    console.log(res.results)
   }
   const HandleGetKidsMovies = async () => {
-    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.gender}=878&${query.popularity}&${query.key}&${query.language}`);                    
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${props.query.gender}=878&${props.query.popularity}&${props.query.key}&${props.query.language}`);                    
     let res = await data.json();
     props.putKidsMovies(res.results);  
   }
   const HandleGetRatedMovies = async () => {
-    const data = await fetch(`https://api.themoviedb.org/3/discover/movie/?${query.certification}&${query.popularity}&${query.key}&${query.language}`);                    
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie/?${props.query.certification}&${props.query.popularity}&${props.query.key}&${props.query.language}`);                    
     let res = await data.json();
     props.putRatedMovies(res.results);  
   }
   const HanldleGetComedyMovies = async () => {
-    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.gender}=35&${query.popularity}&${query.key}&${query.language}`);                    
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${props.query.gender}=35&${props.query.popularity}&${props.query.key}&${props.query.language}`);                    
     let res = await data.json();
     props.putComedyMovies(res.results);  
   } 
@@ -111,7 +103,8 @@ const mapStateToProps = state =>{
     comedy: state.comedy,
     rated: state.rated,
     myList: state.myList,
-    data: state.data
+    data: state.data,
+    query: state.query
   };
 };
 const mapDispachToProps = {

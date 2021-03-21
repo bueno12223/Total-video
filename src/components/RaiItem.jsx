@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setFavorites, deleteFavorites} from '../actions';
-import "../assets/style/components/railItem.scss";
+
 import add from '../assets/images/estrella.png'
 import play from '../assets/images/play.png';
-import Loader from "../components/Loader"
+
+import "../assets/style/components/railItem.scss";
 
 const railitem = (props) => {
     const {poster_path, id,overview,title} = props;
@@ -29,8 +31,9 @@ const railitem = (props) => {
                     <div className="rail_info">
                     <p>{overview}</p>
                     <h4>{title}</h4>
-                    <img src={image} onClick={action} className="rail__itemAction"/>   
-                    <img src={play} className="rail__itemPlay"></img>
+                    <img src={image} onClick={action} className="rail__itemAction"/> 
+                    <Link to={`/player/${id}`} ><img src={play} className="rail__itemPlay"></img></Link>  
+                    
 
                     </div>
                 </div>

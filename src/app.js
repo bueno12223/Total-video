@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom"
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from './pages/register';
+import Player from './pages/player';
 import Layout from "./components/layout";
 import NotFoud from "./components/notFoud";
 
@@ -16,6 +17,7 @@ function App() {
            <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/player/:id" component={Player} />
           <Route component={NotFoud} />
 
            </Switch>

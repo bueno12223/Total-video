@@ -1,0 +1,21 @@
+.player__video{
+    width: 90%;
+    height: 90vh;
+    border-radius: 20px;
+
+}
+.player__videoContainer{
+    margin-left: 10%;
+}
+.player__button{
+    background-color: white;
+    border: transparent;
+    margin-left: calc(50% - 120px);
+    width: 250px;
+    border-radius: 20px;
+    height: 25px;
+    color:  #1ed8cf;
+    font-weight: bold;
+    border-top: 30px;
+    outline:none;
+}
