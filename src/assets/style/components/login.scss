@@ -1,11 +1,12 @@
 .login__container{
-    box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
+    box-shadow: 0px 0px 0px 2px white;
     border-radius: 20px;
     margin: 0 auto;
     width: 350px;
     height: 416px;
     display: flex;
     flex-direction: column;
+
    
 }
 .login__container h2{
@@ -24,6 +25,7 @@
     margin-bottom: 10px;
     color: white;
     height: 30px;
+    outline:none;
 }
 .login__container button{
     background-color: white;
@@ -35,6 +37,7 @@
     color:  #1ed8cf;
     font-weight: bold;
     border-top: 30px;
+    outline:none;
 }
 .login__remember{
     font-size: 12px;

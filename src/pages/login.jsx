@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import {Link }from 'react-router-dom';
 
 import "../assets/style/components/login.scss"
 
@@ -29,7 +30,7 @@ class login extends React.Component{
                     <img src="https://img.icons8.com/ios/50/ffffff/google-logo--v1.png"/>
                     <p><a href="">Iniciar sesión con Google</a></p>
                 </div>
-                <div ><p className="login__register">¿No tienes cuenta? Registrate <a href="">aquí</a></p></div>
+                <div ><p className="login__register">¿No tienes cuenta? Registrate <Link to='/register'><a href="">aquí</a></Link></p></div>
 
 
             </section>

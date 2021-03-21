@@ -33,7 +33,6 @@ const reducer = (state, action) =>{
 				comedy:action.payload 
 			};
 		case 'PUT_DATA':
-			console.log(action.payload)
 		return{
 			...state,
 			data: action.payload.length
@@ -41,10 +40,25 @@ const reducer = (state, action) =>{
 			: [] 
 			
 		};
+		case 'REGISTER_SUBMIT':
+			console.log("hwy")
+			return{
+				...state,
+				user: {
+					
+					email: action.payload.email,
+					password: action.payload.password,
+					userId: action.payload.userId,
+
+
+				}
+
+			}
 
 		  
 		default:
-            return state; 
+			return state;
+			 
             }
 }
 export default reducer;

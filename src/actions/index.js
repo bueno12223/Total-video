@@ -25,4 +25,8 @@ export const putComedyMovies = (payload) => ({
 export const putSeachData = (payload) => ({
     type: 'PUT_DATA',
     payload
-    }); 
+    });
+export const registerSubmit = (payload) => ({
+    type: 'REGISTER_SUBMIT',
+    payload
+    });
