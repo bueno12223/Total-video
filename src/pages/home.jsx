@@ -34,6 +34,7 @@ const home = props => {
     const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.popularity}&${query.key}&${query.language}`);                    
     let res = await data.json();
     props.putPopularMovies(res.results);
+    console.log(res.results)
   }
   const HandleGetKidsMovies = async () => {
     const data = await fetch(`https://api.themoviedb.org/3/discover/movie?${query.gender}=878&${query.popularity}&${query.key}&${query.language}`);                    

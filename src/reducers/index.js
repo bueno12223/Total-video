@@ -41,7 +41,6 @@ const reducer = (state, action) =>{
 			
 		};
 		case 'REGISTER_SUBMIT':
-			console.log("hwy")
 			return{
 				...state,
 				user: {

@@ -12,7 +12,14 @@ let initialState = {
     'kids': [],
     'rated': [],
     'comedy': [],
-    'data': []
+    'data': [],
+    'query': {
+    popularity: 'sort_by=popularity.desc',
+    key: 'api_key=b89fc45c2067cbd33560270639722eae',
+    language: 'language=es',
+    gender: 'with_genres',
+    certification: 'certification_country=US&&certification=R'
+    }
 }
 
 const store = createStore(reducer, initialState);
