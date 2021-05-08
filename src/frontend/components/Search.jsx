@@ -4,7 +4,6 @@ const searcher = "¿Que deseas ver hoy?"
 const input = "Buscar ..."
 import {connect} from "react-redux"
 import {putSeachData} from '../actions'
-import {Link} from 'react-router-dom';
 
 const Search = (props) => {
     let value

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server/index",
+    "dev": "nodemon src/server/index",
     "build": "webpack serve --open --mode development "
   },
   "repository": {

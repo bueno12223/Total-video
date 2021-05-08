@@ -8,6 +8,6 @@ const footer = () => (
         <Link to='/'><a href="/">Términos de uso</a></Link>
         <Link to='/'><a href="/">Privacidad</a></Link>
         <Link to='/'><a href="/">Ayuda</a></Link>
-        </footer>
+        </footer> 
 )
 export default footer
