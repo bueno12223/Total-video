@@ -9,4 +9,17 @@
     padding: 30px 0;
     margin-left: 20px;
     overflow: hidden;
+    transition: 0.5ms;
+    & svg {
+      position: absolute;
+      z-index: 1;
+      padding: 10px;
+      left: 0;
+      & g {
+        fill: black;
+    }
+  }
+  &Arrow-R {
+    margin-left: 30px;
+  }
   }
