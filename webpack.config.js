@@ -56,13 +56,14 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test:  /\.(scss|css)$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
           'css-loader',
-        ],
+          'sass-loader'
+        ]
       },
       {
         test: /\.(png|gif|jpg|svg)$/,
@@ -89,7 +90,7 @@ module.exports = {
       () => { },
     isDev ? () => { } :
       new CompressionPlugin({
-        test: /\.js$|\.css$/,
+        test: /\.js$|\.(scss|css)$/,
         filename: '[path][base].gz',
       }),
     isDev ? () => { } :

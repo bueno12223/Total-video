@@ -1,15 +1,12 @@
-import React from "react"
+import React from 'react';
 
-import "../assets/style/components/rail.scss"
+import '../assets/style/components/rail.scss';
 
-const Rile  = ({children}) => (
-    <section className="rail">
-        
-        {children}
-        
-
-    </section>
+const Rile = ({ children }) => (
+  <section className='rail'>
+    {children}
+  </section>
 
 );
 
-export default Rile
+export default Rile;

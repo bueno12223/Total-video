@@ -9,17 +9,14 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { renderRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
-import axios from 'axios';
-import cookieParser from 'cookie-parser';
 import reducer from '../frontend/reducers/index';
-import serverRoutes from '../frontend/routers/serverRoutes';
+import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
 
 dotenv.config();
 const { ENV, PORT } = process.env;
 const app = express();
 app.use(express.json());
-app.use(cookieParser());
 
 if (ENV === 'development') {
   console.log('Development config');
@@ -45,15 +42,14 @@ const setResponse = (html, preloadedState, manifest) => {
   const mainStyles = manifest ? manifest['vendors.css'] : 'assets/app.css';
   const mainBuild = manifest ? manifest['main.js'] : 'assets/app.js';
   const vendorBuild = manifest ? manifest['vendors.js'] : 'assets/vendor.js';
-  // const batata = manifest ? manifest['assets/batata.svg'] : 'assets/vendor.js';
   return (`
   <!DOCTYPE html>
   <html>
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>batataBit</title>
-      <script src="https://kit.fontawesome.com/4aeb7d5cfb.js" crossorigin="anonymous"></script>    
+      <link rel="shortcut icon" href="https://img.icons8.com/wired/64/ffffff/music-video.png" />
+      <title>Total video</title>   
       <link rel="stylesheet" href='${mainStyles}' type="text/css">
     </head>
     <body>
@@ -70,22 +66,15 @@ const setResponse = (html, preloadedState, manifest) => {
 
 const renderApp = async (req, res) => {
   const initialState = {
-    'user': {email: null, password: null, userId: null},
-    'myList':[],
+    'user': { email: 'berriojesus122@gmail.com', password: null, userId: 'null' },
+    'myList': [],
     'popular': [],
     'kids': [],
     'rated': [],
     'comedy': [],
-    'data': [],
-    'query': {
-    popularity: 'sort_by=popularity.desc',
-    key: 'api_key=b89fc45c2067cbd33560270639722eae',
-    language: 'language=es',
-    gender: 'with_genres',
-    certification: 'certification_country=US&&certification=R'
-    }
-  }
-  let isLogged = false;
+    'search': [],
+  };
+  const isLogged = true;
   const store = createStore(reducer, initialState);
   const preloadedState = store.getState();
   const html = renderToString(
@@ -104,6 +93,6 @@ app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log('Server running on port 3000');
+    console.log(`Server running on port ${PORT}`);
   };
 });

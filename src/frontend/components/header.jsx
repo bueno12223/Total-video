@@ -1,44 +1,33 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import md5 from 'md5';
-import {connect} from 'react-redux'
-
-import "../assets/style/components/header.scss"
-import { registerSubmit } from "../actions";
+import { connect } from 'react-redux';
+import '../assets/style/components/header.scss';
 
 const header = (props) => {
-    const handleregisterSubmit = () => {
-        props.registerSubmit({
-            email: '',
-            userId: '',
-            password: ''
-        })
-    }
-    return(
-        <header className="header">
-        <div  className="header__containerImage">
-            <Link to ="/">
-            <img src="https://img.icons8.com/wired/64/ffffff/music-video.png" className="header__image" />
-            </Link>
-            <Link to="/"><p className="header__total">Total <b> Video</b></p></Link> 
-        </div>
-        <div className="header__user">
-
-            <img src={props.email? `https://www.gravatar.com/avatar/${md5(props.email)}?d=identicon` : `https://img.icons8.com/wired/64/ffffff/change-user-male.png`}  className="header__userImage"/>
-            <ul className="header__userText">
-                {props.email &&(<Link to="/"><li><a href="">Cuenta</a></li></Link>)}
-                <Link to="/login" onClick={handleregisterSubmit}><li><a  href="">{props.email? `Cerrar sesión`: `Iniciar Sesión` }</a></li></Link>
-            </ul>
-        </div>
+  const { email } = props;
+  const logo = 'https://img.icons8.com/wired/64/ffffff/music-video.png';
+  return (
+    <header className='header'>
+      <section className='header__containerImage'>
+        <Link to='/'>
+          <img src={logo} className='header__image' alt='total video logo' />
+          <p className='header__total'>TotalVideo</p>
+        </Link>
+      </section>
+      <section className='header__user'>
+        <img src={email ? `https://www.gravatar.com/avatar/${md5(email)}?d=identicon` : logo} className='header__userImage' alt='user avatar' />
+        <ul className='header__userText'>
+          {email && (<li><Link to='/'>Cuenta</Link></li>)}
+          <li><Link to='/login'>{email ? 'Cerrar sesión' : 'Iniciar Sesión' }</Link></li>
+        </ul>
+      </section>
     </header>
-    )}
+  );
+};
 
+const mapStateToProps = (state) => {
+  return { email: state.user.email };
+};
 
-const mapStateToProps = state => {
-    return{email: state.user.email}
-}
-const mapDispachToProps = {
-    registerSubmit,
-}
-
-export default connect(mapStateToProps, mapDispachToProps)(header)
+export default connect(mapStateToProps, null)(header);

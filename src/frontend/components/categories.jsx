@@ -1,19 +1,17 @@
-import React from "react"
+import React from 'react';
+import RailItem from './RaiItem';
+import '../assets/style/components/categories.scss';
 
-import "../assets/style/components/categories.scss"
+const categories = ({ title, data = [] }) => (
+  <section>
+    <p className='rail_title'>{title}</p>
+    <ul className='rail_container'>
+      {
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        data.map((e) => e.poster_path && <RailItem key={e.id} {...e} />)
+      }
+    </ul>
+  </section>
+);
 
-const categories = ({Children, title}) => (
-    <div>
-
-    <p className="rail_title">{title}</p>
-       <div className="categories">
-               
-           {Children}
-       </div>
-   
-    </div>
-
-  
-    )
-
-export default categories
+export default categories;
