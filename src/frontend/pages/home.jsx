@@ -19,9 +19,9 @@ const home = (props) => {
   };
   const url = `https://api.themoviedb.org/3/discover/movie?${query.key}${query.popularity}`;
   useEffect(() => {
-    searchData(url, `${query.popularity}`).then((data) => data && putSeachData({ data, key: 'popular' }));
-    searchData(url, `${query.gender}=28`).then((data) => data && putSeachData({ data, key: 'kids' }));
-    searchData(url, `${query.gender}=2`).then((data) => data && putSeachData({ data, key: 'comedy' }));
+    searchData(url, `${query.popularity}`).then(({ results }) => results && putSeachData({ data: results, key: 'popular' }));
+    searchData(url, `${query.gender}=28`).then(({ results }) => results && putSeachData({ data: results, key: 'kids' }));
+    searchData(url, `${query.gender}=2`).then(({ results }) => results && putSeachData({ data: results, key: 'comedy' }));
   }, []);
   if (search.length !== 0) {
     return (

@@ -5,7 +5,7 @@ const SearchData = async (url, query) => {
   try {
     if (query) {
       const result = await axios(`${url}${query}`);
-      movieList = result.data.results;
+      movieList = result.data;
       return movieList;
     }
   } catch (e) {

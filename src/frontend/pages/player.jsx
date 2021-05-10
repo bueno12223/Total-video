@@ -1,40 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
-
+import SearchData from '../hooks/searchData';
 import '../assets/style/player.scss';
-import axios from 'axios';
 
 const player = (props) => {
-  // const { id } = match.params;
-  const [data, setData] = useState([]);
+  const { id } = props.match.params;
+  const { id: key } = props.state;
+  const [video, setVideo] = useState({});
+  const [data, setData] = useState({});
+  const URL = 'https://api.themoviedb.org/3/movie/';
+  const paramsToData = `${id}?${key}`;
+  const paramsToVideo = `${id}/videos?language=es${key}`;
   useEffect(async () => {
-    result = await axios(`https://api.themoviedb.org/3/movie/${parseFloat(id)}/videos?language=es${key}`);
-    setData([...result.data.results]);
+    SearchData(URL, paramsToData).then((data) => setData(data));
+    SearchData(URL, paramsToVideo).then((data) => setVideo({ ...data.results[0] }));
   }, []);
-  console.log({ state, match });
-  const { id: key } = state;
-  const { params: { id }} = match;
-
+  const styles = {
+    backgroundImage: `linear-gradient(
+      to bottom,
+      rgba(0,0,0, 0),
+      rgba(255 255 255)
+    ),url(https://image.tmdb.org/t/p/w342${data.poster_path})`,
+  };
+  console.log(video);
   return (
-    <>
-      <div className='player__videoContainer'>
-        {data[0] && (
-          data.map((e) => (
-            <iframe
-              title='f'
-              className='player__video'
-              src={`https://www.youtube.com/embed/${e.key}?autoplay=1&mute=1`}
-            />
-          )))}
+    <section className='player__video'>
+      <header className='player__videoHeader'>
+        <div style={styles} />
+        <div>
+          <h2 className='player__video-Title'>{data.original_title}</h2>
+          <p className='player__video-Overview'>{data.overview}</p>
+          <Link to='/'><button type='button' className='player__button'>Regresar</button></Link>
+        </div>
+        <div className='player__videoContainer'>
+          <iframe
+            title={video.name}
+            className='player__video'
+            src={`https://www.youtube.com/embed/${video.key}?autoplay=1&mute=1`}
+          />
 
-      </div>
-
-      <Link to='/'><button type='button' className='player__button'>Regresar</button></Link>
-
-    </>
-
+        </div>
+      </header>
+    </section>
   );
 };
 

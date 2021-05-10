@@ -1,7 +1,7 @@
 import Home from '../pages/home';
 import Login from '../pages/login';
 import Register from '../pages/register';
-import Player from '../pages/player';
+import player from '../pages/player';
 
 const serverRoutes = (isLogged) => {
   return [
@@ -23,7 +23,7 @@ const serverRoutes = (isLogged) => {
     {
       exact: true,
       path: '/player/:id',
-      component: Player,
+      component: player,
     },
   ];
 };
