@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import "../assets/style/components/Loader.scss";
+import '../assets/style/components/Loader.scss';
 
-export default class Loader extends Component {
-  render() {
-    return (
-      <div className="lds-grid">
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-      </div>
-    );
-  }
-}
+const Loader = () => (
+  <div className='lds-grid'>
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+);
+export default Loader;

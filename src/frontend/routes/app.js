@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
-          <Route exact path='/player/:id' component={Player} />
+          <Route exact path='/player/:id' render={((props) => <Player {...props} />)} />
           <Route component={NotFoud} />
         </Switch>
       </Layout>

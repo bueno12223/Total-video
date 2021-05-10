@@ -1,49 +1,47 @@
-import React,{useEffect, useState} from 'react';
-import {Link }from 'react-router-dom';
-import {connect} from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
-import '../assets/style/player.scss'
+import '../assets/style/player.scss';
+import axios from 'axios';
 
 const player = (props) => {
-    const [data, setData ] = useState([])
-    const params = props.match.params;
-    useEffect( () => {
-        getTrailer(params);
-    }, props)
-    const getTrailer = async(params) =>{
-            const data = await fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?${props.query.key}&${props.query.language}`);                    
-        let res = await data.json();
-        if(res.results){
-            setData([res.results[0]])
-        }
-        
-    };
-    
-    return(
-        <React.Fragment>
-            <div className="player__videoContainer">
-            {data[0] &&(
-                data.map(e =>(
-                    <iframe className='player__video'
-                src={`https://www.youtube.com/embed/${e.key}?autoplay=1&mute=1`}>
-            </iframe>
-            )))}
-            
+  // const { id } = match.params;
+  const [data, setData] = useState([]);
+  useEffect(async () => {
+    result = await axios(`https://api.themoviedb.org/3/movie/${parseFloat(id)}/videos?language=es${key}`);
+    setData([...result.data.results]);
+  }, []);
+  console.log({ state, match });
+  const { id: key } = state;
+  const { params: { id }} = match;
 
-            </div>
+  return (
+    <>
+      <div className='player__videoContainer'>
+        {data[0] && (
+          data.map((e) => (
+            <iframe
+              title='f'
+              className='player__video'
+              src={`https://www.youtube.com/embed/${e.key}?autoplay=1&mute=1`}
+            />
+          )))}
 
-           
-             
-        <Link to='/'><button className='player__button'>Regresar</button></Link>
-        
+      </div>
 
-        </React.Fragment>
-       
-    )
-}
+      <Link to='/'><button type='button' className='player__button'>Regresar</button></Link>
 
-const mapStateToProps = state =>{
-    return{
-      query: state.query
-    } }
-export default  connect(mapStateToProps,null)(player)
+    </>
+
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+const ShowTheLocationWithRouter = withRouter(player);
+export default connect(mapStateToProps, null)(ShowTheLocationWithRouter);

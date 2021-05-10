@@ -73,6 +73,7 @@ const renderApp = async (req, res) => {
     'rated': [],
     'comedy': [],
     'search': [],
+    'id': '&api_key=b89fc45c2067cbd33560270639722eae',
   };
   const isLogged = true;
   const store = createStore(reducer, initialState);

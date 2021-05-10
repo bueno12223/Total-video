@@ -9,11 +9,10 @@ import Categories from '../components/categories';
 
 const home = (props) => {
   const { myList, search, popular, kids, comedy } = props;
-  console.log(popular);
   const { putSeachData } = props;
   const query = {
     popularity: '&sort_by=popularity.desc',
-    key: '&api_key=b89fc45c2067cbd33560270639722eae',
+    key: props.id,
     language: 'language=es',
     gender: 'with_genres',
     certification: 'certification_country=US&&certification=R',
