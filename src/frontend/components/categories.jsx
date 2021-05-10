@@ -4,7 +4,7 @@ import '../assets/style/components/categories.scss';
 
 const categories = ({ title, data = [] }) => (
   <section>
-    <p className='rail_title'>{title}</p>
+    <h2 className='rail_title'>{title}</h2>
     <ul className='rail_container'>
       {
         // eslint-disable-next-line react/jsx-props-no-spreading

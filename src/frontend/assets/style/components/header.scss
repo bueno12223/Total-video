@@ -7,10 +7,10 @@
   
   .header__containerImage {
     margin-left: 10px;
-    display: flex;
   }
   .header__containerImage > a {
     text-decoration: none;
+    display: flex;
   }
   
   .header__image {
@@ -21,7 +21,7 @@
   
   .header__total {
     color: white;
-    font-size: 20px;
+    font-size: 2em;
     margin-top: 20px;
     margin-left: 10px;
     font-style: none;
