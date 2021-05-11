@@ -9,7 +9,7 @@ const Search = ({ putSeachData }) => {
   const [search, setSearch] = useState('');
   const url = 'https://api.themoviedb.org/3/search/movie?&api_key=b89fc45c2067cbd33560270639722eae&language=es';
   const searchIcon = 'https://img.icons8.com/ios-glyphs/24/ffffff/google-web-search.png';
-  searchData(url, `&query=${search}`).then((data) => data && putSeachData({ data, key: 'search' }));
+  searchData(url, `&query=${search}`).then(({ results }) => results && putSeachData({ data: results, key: 'search' }));
   if (!search) {
     putSeachData({ data: [], key: 'search' });
   }

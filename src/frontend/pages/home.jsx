@@ -24,6 +24,7 @@ const home = (props) => {
     searchData(url, '&page=3').then(({ results }) => results && putSeachData({ data: results, key: 'comedy' }));
   }, []);
   if (search.length !== 0) {
+    console.log(search);
     return (
       <>
         <SearchBar />

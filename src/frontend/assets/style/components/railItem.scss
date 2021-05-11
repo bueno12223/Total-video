@@ -8,6 +8,7 @@
   object-fit: cover;
   height: 300px;
   min-width: 200px;
+  max-width: 100px;
   overflow: hidden;
   &-cover {
     width: 100%;

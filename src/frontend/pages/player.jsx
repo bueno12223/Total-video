@@ -23,7 +23,6 @@ const player = (props) => {
       rgba(255 255 255)
     ),url(https://image.tmdb.org/t/p/w342${data.poster_path})`,
   };
-  console.log(video);
   return (
     <section className='player__video'>
       <header className='player__videoHeader'>
@@ -35,8 +34,8 @@ const player = (props) => {
         </div>
         <div className='player__videoContainer'>
           <iframe
+            className='player__videoYoutube'
             title={video.name}
-            className='player__video'
             src={`https://www.youtube.com/embed/${video.key}?autoplay=1&mute=1`}
           />
 
