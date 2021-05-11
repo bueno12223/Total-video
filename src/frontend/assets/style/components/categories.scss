@@ -8,18 +8,30 @@
     gap: 5px;
     padding: 30px 0;
     margin-left: 20px;
-    overflow: hidden;
-    transition: 0.5ms;
-    & svg {
+    overflow: auto;
+    & button {
+      background: none;
+      border: none;  
       position: absolute;
+      display: none;
+    }
+    &-arrowR {
+      margin-left: calc( 98% - 64px );
+      margin-top: 110px;
+    }
+    &-arrorL {
       z-index: 1;
-      padding: 10px;
-      left: 0;
-      & g {
-        fill: black;
+      margin-top: 126px;
+
     }
   }
-  &Arrow-R {
-    margin-left: 30px;
-  }
-  }
+@media(min-width: 920px){
+  .rail_container {
+    overflow: hidden;
+    & button {
+      display: inline;
+  
+    }
+
+   }
+}

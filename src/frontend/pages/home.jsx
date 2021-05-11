@@ -20,8 +20,8 @@ const home = (props) => {
   const url = `https://api.themoviedb.org/3/discover/movie?${query.key}${query.popularity}`;
   useEffect(() => {
     searchData(url, `${query.popularity}`).then(({ results }) => results && putSeachData({ data: results, key: 'popular' }));
-    searchData(url, `${query.gender}=28`).then(({ results }) => results && putSeachData({ data: results, key: 'kids' }));
-    searchData(url, `${query.gender}=2`).then(({ results }) => results && putSeachData({ data: results, key: 'comedy' }));
+    searchData(url, '&page=2').then(({ results }) => results && putSeachData({ data: results, key: 'kids' }));
+    searchData(url, '&page=3').then(({ results }) => results && putSeachData({ data: results, key: 'comedy' }));
   }, []);
   if (search.length !== 0) {
     return (
@@ -35,9 +35,9 @@ const home = (props) => {
     <>
       <SearchBar />
       {myList.length !== 0 && <Categories title='My list' data={myList} /> }
-      {popular && <Categories title='Popular' data={popular} /> }
-      {kids && <Categories title='Kids' data={kids} /> }
-      {comedy && <Categories title='comedy' data={comedy} /> }
+      {popular && <Categories title='Rail1' data={popular} /> }
+      {kids && <Categories title='Rail2' data={kids} /> }
+      {comedy && <Categories title='Rail3' data={comedy} /> }
     </>
   );
 };
